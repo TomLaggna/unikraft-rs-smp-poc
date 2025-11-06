@@ -2,7 +2,16 @@ spec: v0.6
 
 name: helloworld
 
-unikraft: stable
+unikraft:
+  version: stable
+  kconfig:
+    # config changes from enabling 4 cores in kraft menu -> platform -> platform interface -> max lcpus
+    CONFIG_UKPLAT_ACPI: y
+    CONFIG_UKPLAT_LCPU_MAXCOUNT: 4
+    CONFIG_HAVE_SMP: y
+    CONFIG_UKPLAT_LCPU_RUN_IRQ: 13
+    CONFIG_UKPLAT_LCPU_WAKEUP_IRQ: 14
+    CONFIG_LIBUKINTCTLR_APIC: y
 
 libraries:
   musl: stable
